@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    // "suppressImplicitAnyIndexErrors": false,
+    "noResolve": false,
+    "noUnusedParameters": false,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "strictPropertyInitialization": false,
+
+    "suppressImplicitAnyIndexErrors": true,
+
+    "outDir": "./dist/",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": [
+        "reflect-metadata"
+    ]
+  }
+}
