@@ -13,7 +13,7 @@ const TodoAdd = (props:IProps) => {
   const { form } = props;
   const { getFieldDecorator } = form;
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     form.validateFields((err, todo) => {
       if (!err) {
@@ -25,7 +25,7 @@ const TodoAdd = (props:IProps) => {
 
   return (
     <Form
-      onSubmit={e => handleSubmit(e)}
+      onSubmit={handleSubmit}
       layout="horizontal"
     >
       <Form.Item>
@@ -42,7 +42,7 @@ const TodoAdd = (props:IProps) => {
             placeholder="What needs to be done?"
             spellCheck={false}
             autoComplete={undefined}
-            autoFocus
+            autoFocus={true}
           />
         )}
       </Form.Item>

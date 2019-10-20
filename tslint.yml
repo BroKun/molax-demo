@@ -2,10 +2,24 @@ defaultSeverity: error
 extends:
   - tslint-react
   - tslint-eslint-rules
-jsRules:
 rules:
   eofline: true
-  no-console: true
+  deprecation: true
+  no-any: true
   no-construct: true
   no-debugger: true
   no-reference: true
+  no-shadowed-variable: true
+  jsx-no-lambda: false
+  jsx-no-multiline-js: false
+  no-console: false
+  typedef:
+    - true
+    - call-signature
+    - property-declaration
+  no-return-await:
+    severity: warning
+  arrow-return-shorthand:
+    - true
+    - multiline
+  no-trailing-whitespace: true

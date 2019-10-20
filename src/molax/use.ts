@@ -3,10 +3,12 @@ import { interfaces } from 'inversify';
 import { InversifyContext } from './provider';
 import { setHooksForTarget, ObjectSelf } from './core';
 
+// tslint:disable-next-line:no-any
 function proxy<T extends Object>(obj:T , hooks: React.Dispatch<any>):T  {
   const setForPorps = setHooksForTarget(obj);
   return new Proxy(obj, {
-    get(target:any, name:string|symbol) {
+    // tslint:disable-next-line:no-any
+    get(target:any, name:string|symbol): any {
       if(name === ObjectSelf) {
         return obj;
       }
@@ -28,10 +30,9 @@ export function useInstance<T extends Object>(identifier: interfaces.ServiceIden
 
 // TODO: 增加tag/name实例的use引入
 
-// TODO: bindItem api rename
-// TODO: bindItem in Multidimensional Arrays
-export function bindItem<T extends Object>(item:T): T{
+// TODO: bindToArray in Multidimensional Arrays
+export function bindToArray<T extends Object>(item:T): T{
   const [times, forceUpdate] = useReducer<(prevState: number, action?: number) => number>(time => time + 1, 0);
-  console.log('bindItem reducer:', item, times);
+  console.log('bindToArray reducer:', item, times);
   return proxy(item, forceUpdate);
 }

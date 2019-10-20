@@ -1,18 +1,18 @@
 import React from 'react';
 import { Checkbox, Tooltip, Tag, Icon, List, Button } from "antd";
 import { ToDoItem } from '@/todo-list/todo-item';
-import { bindItem, useInstance } from '@/molax/use';
+import { bindToArray, useInstance } from '@/molax/use';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { ToDoManager } from '@/todo-list/manager';
 import styles from './index.less';
 
 export const ToDoItemView: React.FC<{todo:ToDoItem}> = ({todo} ) => {
-    const bindTodo=bindItem(todo);
+    const bindTodo=bindToArray(todo);
     const manager = useInstance<ToDoManager>(ToDoManager);
     return (
       <List.Item
         actions={[
-          <Tooltip title="Remove Todo">
+          <Tooltip title="Remove Todo" key="remove">
             <Button type="danger" onClick={() => manager.remove(todo)}>
               <Icon type="delete" />
             </Button>

@@ -7,10 +7,8 @@ type Props = {
     container: Container;
 };
 
-export const Provider: React.FC<Props> = (props) => {
-    return (
-        <InversifyContext.Provider value={{ container: props.container }}>
-            {props.children}
-        </InversifyContext.Provider>
-    );
-};
+export const Provider: React.FC<Props> = (props) =>(
+    <InversifyContext.Provider value={{ container: props.container }}>
+        {props.children}
+    </InversifyContext.Provider>
+);

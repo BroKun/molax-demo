@@ -1,11 +1,14 @@
 import { setProp, notify, ObjectSelf } from '../core';
 import { defineArrayInstance } from './array';
 
-export function prop() {
-  return (target: any, propertyKey: string) =>{
+type propDecorator = (target: object, propertyKey: string) => void;
+
+export function prop():propDecorator {
+  return (target: object, propertyKey: string) =>{
     const propertyType = Reflect.getMetadata('design:type', target, propertyKey);
     // 属性 getter
-    let getter = function (this: any) {
+    // tslint:disable-next-line:no-any
+    let getter = function (this: object):void  {
       const thisObj = this[ObjectSelf]?this[ObjectSelf]:this;
       setProp(thisObj, target, propertyKey);
       const value = Reflect.getOwnMetadata(propertyKey, thisObj);
@@ -13,7 +16,8 @@ export function prop() {
       return value;
     };
     // 属性 setter
-    let setter = function (this: any, newVal: any) {
+    // tslint:disable-next-line:no-any
+    let setter = function (this: object, newVal: any):void {
       const thisObj = this[ObjectSelf]?this[ObjectSelf]:this;
       setProp(thisObj, target, propertyKey);
       if(propertyType === Array) {
@@ -39,7 +43,6 @@ export function prop() {
 }
 
 /**
- * TODO:
- * 需要对访问器get的修饰器，用来支持计算属性的获
+ * TODO:需要对访问器get的修饰器，用来支持计算属性的获
  * 修改get表现，关键点是能否获取到关联的基础属性，如果可以的话能够做到比较精确的关联更新，如果不能就与类关联，所有被修饰属性更新都触发，这样效率会受一些影响。
  */

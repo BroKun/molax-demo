@@ -12,11 +12,13 @@ const methodsToPatch = [
   'reverse'
 ]
 
-export function defineArrayInstance(arr:any, instance: any, target: any, propertyKey: string) {
+export function defineArrayInstance(arr:object, instance: object, target: object, propertyKey: string):void {
   console.log('defineArrayInstance',arr)
-  methodsToPatch.forEach(function (method) {
+  // tslint:disable-next-line:no-any
+  methodsToPatch.forEach(function (method): any {
     const original = arr[method]
-    function mutator(this: any, ...args:any[]) {
+    // tslint:disable-next-line:no-any
+    function mutator(this: object, ...args: any[]): any {
       console.log('mutator', this);
       const result = original.apply(this, args);
       console.log('arr', this);

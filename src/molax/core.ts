@@ -1,7 +1,7 @@
 export const ObservePropMeta = Symbol("ObservePropMeta");
 export const ObjectSelf = Symbol('ObjectSelf');
 
-export function setProp(context: any,target: any, propertyKey: string|symbol) {
+export function setProp(context: object,target: object, propertyKey: string|symbol):void {
   const propMetas = Reflect.getOwnMetadata(ObservePropMeta, context, propertyKey);
   if (!propMetas) {
     console.log('setProps:', ObservePropMeta, context, propertyKey);
@@ -11,7 +11,7 @@ export function setProp(context: any,target: any, propertyKey: string|symbol) {
 
 export type notifyList = React.Dispatch<number | undefined>[];
 
-export function notify(context: any, propertyKey: string) {
+export function notify(context: object, propertyKey: string):void {
   console.log('调用notify:', context, propertyKey);
   if(Reflect.hasOwnMetadata(ObservePropMeta, context, propertyKey)) {
     const propMetas: notifyList = Reflect.getOwnMetadata(ObservePropMeta, context, propertyKey);
@@ -24,10 +24,13 @@ export function notify(context: any, propertyKey: string) {
     }
   }
 }
-export function setHooksForTarget(target:any){
+type setHooks = (hook: React.Dispatch<number | undefined>)=> void;
+type setHooksForProperty = (propertyKey: string|symbol)=> setHooks;
+
+export function setHooksForTarget(target:object): setHooksForProperty{
   // const prototype = Object.getPrototypeOf(target);
-  return (propertyKey:string|symbol) => {
-    return (hook: React.Dispatch<number | undefined>) =>{
+  return (propertyKey:string|symbol): setHooks =>
+    (hook: React.Dispatch<number | undefined>): void =>{
       const metas: notifyList = Reflect.getOwnMetadata(ObservePropMeta, target, propertyKey);
       console.log(ObservePropMeta, target, propertyKey, metas)
       // TODO: 优化性能，不要线性比对
@@ -36,5 +39,4 @@ export function setHooksForTarget(target:any){
         metas.push(hook)
       }
     }
-  }
 }

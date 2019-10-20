@@ -8,7 +8,6 @@ import styles from './index.css';
 
 export const ToDo: React.FC = () => {
     const manager = useInstance<ToDoManager>(ToDoManager);
-
     return (
         <div className={styles.todo}>
           <ToDoAdd />
