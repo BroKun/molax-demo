@@ -24,7 +24,7 @@ export function useInstance<T extends Object>(identifier: interfaces.ServiceIden
   if (!container) { throw new Error(); }
   const obj = container.get<T>(identifier);
   const [times, forceUpdate] = useReducer<(prevState: number, action?: number) => number>(time => time + 1, 0);
-  console.log('useInstance reducer:', obj, times)
+  console.debug('useInstance reducer:', obj, times)
   return proxy(obj, forceUpdate);
 };
 
@@ -33,6 +33,6 @@ export function useInstance<T extends Object>(identifier: interfaces.ServiceIden
 // TODO: bindToArray in Multidimensional Arrays
 export function bindToArray<T extends Object>(item:T): T{
   const [times, forceUpdate] = useReducer<(prevState: number, action?: number) => number>(time => time + 1, 0);
-  console.log('bindToArray reducer:', item, times);
+  console.debug('bindToArray reducer:', item, times);
   return proxy(item, forceUpdate);
 }

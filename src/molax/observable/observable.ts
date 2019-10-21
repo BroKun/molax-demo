@@ -11,8 +11,7 @@ export function prop():propDecorator {
     let getter = function (this: object):void  {
       const thisObj = this[ObjectSelf]?this[ObjectSelf]:this;
       setProp(thisObj, target, propertyKey);
-      const value = Reflect.getOwnMetadata(propertyKey, thisObj);
-      console.log(`Get: ${propertyKey} => `, value, thisObj);
+      const value = Reflect.getMetadata(propertyKey, thisObj);
       return value;
     };
     // 属性 setter
@@ -27,7 +26,6 @@ export function prop():propDecorator {
         defineArrayInstance(newVal, thisObj, target, propertyKey)
       }
       Reflect.defineMetadata(propertyKey, newVal, thisObj)
-      console.log(`Set: ${propertyKey} => `, newVal, thisObj);
       notify(thisObj, propertyKey);
     };
     // 从类原型中删除原始属性，并使用原始属性的名称创建一个新的属性

@@ -13,15 +13,12 @@ const methodsToPatch = [
 ]
 
 export function defineArrayInstance(arr:object, instance: object, target: object, propertyKey: string):void {
-  console.log('defineArrayInstance',arr)
   // tslint:disable-next-line:no-any
   methodsToPatch.forEach(function (method): any {
     const original = arr[method]
     // tslint:disable-next-line:no-any
     function mutator(this: object, ...args: any[]): any {
-      console.log('mutator', this);
       const result = original.apply(this, args);
-      console.log('arr', this);
       let inserted
       switch (method) {
         case 'push':
