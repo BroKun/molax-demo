@@ -1,17 +1,10 @@
 import { inject, injectable } from "inversify";
 import { prop } from '@/molax/observable';
 import uuid from 'uuid/v4'
+import { ToDoItem } from '../todo-item-registry';
 
-export const ToDoFactory = Symbol("ToDoFactory");
 export const ToDoName = Symbol("ToDoName");
 export const defaultToDoName = "默认";
-
-export interface ToDoItem {
-    id: string;
-    name: string;
-    completed: boolean;
-    toggle: (value?:boolean) => void;
-}
 
 @injectable()
 export class DefaultToDoItem implements ToDoItem {

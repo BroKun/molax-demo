@@ -1,10 +1,10 @@
 import React from "react";
-import { Form, Icon, Input } from "antd";
+import { Form, Icon, Input, Select } from "antd";
 import { FormComponentProps } from 'antd/lib/form';
 import { ToDoManager } from './manager';
 import { useInstance } from '@/molax/use';
 
-interface IProps extends FormComponentProps<{name:string}> {
+interface IProps extends FormComponentProps<{name:string, type:string}> {
 
 }
 
@@ -17,12 +17,29 @@ const TodoAdd = (props:IProps) => {
     e.preventDefault();
     form.validateFields((err, todo) => {
       if (!err) {
-        form.resetFields();
-        manager.add(todo.name)
+        form.resetFields(['name']);
+        manager.add(todo.type, todo.name)
       }
     });
   };
-
+  const selectAfter = (
+    getFieldDecorator("type", {
+      rules: [
+        {
+          required: true,
+          message: "Please select type"
+        }
+      ]
+    })(
+      <Select style={{ width: 80 }}>
+        {
+          manager.getProviders().map(provider=>(
+            <Select.Option key={provider.type} value={provider.type}>{provider.title}</Select.Option>
+          ))
+        }
+      </Select>
+    )
+  );
   return (
     <Form
       onSubmit={handleSubmit}
@@ -43,6 +60,7 @@ const TodoAdd = (props:IProps) => {
             spellCheck={false}
             autoComplete={undefined}
             autoFocus={true}
+            addonAfter={selectAfter}
           />
         )}
       </Form.Item>
