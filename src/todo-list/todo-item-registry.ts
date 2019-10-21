@@ -56,7 +56,7 @@ export class ToDoItemRegistry implements ApplicationContribution {
     }
     getRender(item: ToDoItem): React.FC<{todo: ToDoItem}> {
       const providers = Array.from<ToDoItemProvider>(this.providers.values())
-      const sortted = providers.sort(provider=>provider.canRender(item))
+      const sortted = providers.sort((p, p2)=>p2.canRender(item) - p.canRender(item))
       return sortted[0].render;
     }
 }

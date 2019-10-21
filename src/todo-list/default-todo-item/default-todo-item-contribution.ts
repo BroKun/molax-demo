@@ -7,12 +7,12 @@ const DefaultToDoItemType = 'default';
 
 @injectable()
 export class DefaultToDoItemContribution implements ToDoItemContribution {
-  @inject(DefaultToDoFactory) protected readonly toolbarShareFactory: ToDoItemFactory;
+  @inject(DefaultToDoFactory) protected readonly todoFactory: ToDoItemFactory;
   registerTodoItems(registry: ToDoItemRegistry): void {
     registry.registerItem({
       type: DefaultToDoItemType,
       title: '默认',
-      provide: this.toolbarShareFactory,
+      provide: this.todoFactory,
       render: ToDoItemView,
       canRender: (todo: ToDoItem) => 200,
     })
