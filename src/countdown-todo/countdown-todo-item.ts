@@ -10,7 +10,7 @@ export class CountdownToDoItem extends DefaultToDoItem {
   @prop() public delta:number = 0;
   @inject(ToDoName) name: string;
 
-  protected timer:NodeJS.Timeout;
+  protected timer:number;
   @postConstruct()
   protected init():void {
     this.timer = setInterval(this.progressToDeadline, 1000/3)
