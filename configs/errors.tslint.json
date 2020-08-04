@@ -1,0 +1,25 @@
+{
+  "defaultSeverity": "error",
+  "rules": {
+    "eofline": true,
+    "deprecation": true,
+    "no-any": true,
+    "no-debugger": true,
+    "no-construct": true,
+    "no-reference": true,
+    "no-shadowed-variable": true,
+    "jsx-no-lambda": false,
+    "jsx-no-multiline-js": false,
+    "no-console": false,
+    "typedef":[
+      true,
+      "call-signature",
+      "property-declaration"
+    ],
+    "arrow-return-shorthand":[
+      true,
+      "multiline"
+    ],
+    "no-trailing-whitespace": true
+  }
+}

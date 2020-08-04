@@ -1,0 +1,7 @@
+{
+  "requier": ["ignore-styles", "reflect-metadata/Reflect"],
+  "extension": ["js"],
+  "package": "./package.json",
+  "reporter": "spec",
+  "watch-extensions": ["lib/**/*.js", "test/**/*.js"]
+}

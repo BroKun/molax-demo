@@ -1,0 +1,40 @@
+{
+  "name": "molax-cli",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "BroKun <brokun0128@gmail.com>",
+  "homepage": "https://github.com/BroKun/molax-demo#readme",
+  "license": "MIT",
+  "bin": {
+    "molax-cli": "molax-cli.js"
+  },
+  "molax-scripts": {
+    "clean": "molax-cli compile:clean && molax-cli lint:clean && molax-cli test:clean",
+    "build": "concurrently -n compile,lint -c blue,green \"molax-cli compile\" \"molax-cli lint\"",
+    "compile": "tsc -b compile.tsconfig.json --verbose",
+    "compile:clean": "rimraf lib *.tsbuildinfo",
+    "lint": "tslint -c ../../configs/build.tslint.json --project compile.tsconfig.json",
+    "lint:clean": "rimraf .eslintcache",
+    "watch": "tsc -p compile.tsconfig.json -w",
+    "watch:slow": "tsc -b compile.tsconfig.json -w",
+    "test": "nyc mocha --config ../../configs/mocha.json \"./lib/**/*.*spec.js\"",
+    "test:watch": "mocha -w --config ../../configs/mocha.json \"./lib/**/*.*spec.js\"",
+    "test:clean": "rimraf .nyc_output coverage"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BroKun/molax-demo.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/BroKun/molax-demo/issues"
+  }
+}

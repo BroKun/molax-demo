@@ -1,0 +1,33 @@
+{
+  "name": "molax-app",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "BroKun <brokun0128@gmail.com>",
+  "homepage": "https://github.com/BroKun/molax-demo#readme",
+  "license": "MIT",
+  "main": "lib/molax-app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BroKun/molax-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BroKun/molax-demo/issues"
+  },
+
+  "scripts": {
+    "clean": "molax-cli clean",
+    "build": "molax-cli build",
+    "compile": "molax-cli compile",
+    "watch": "molax-cli watch",
+    "test": "molax test"
+  },
+  "devDependencies": {
+    "molax-cli": "^1.0.0"
+  }
+}

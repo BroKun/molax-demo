@@ -1,0 +1,13 @@
+{
+  "extension": [
+    ".ts"
+  ],
+  "reporter": [
+    "html",
+    "lcov"
+  ],
+  "exclude": [
+      "src/typings",
+      "src/**/*.spec.ts"
+  ]
+}

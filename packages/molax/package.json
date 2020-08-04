@@ -1,0 +1,40 @@
+{
+  "name": "molax",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "BroKun <brokun0128@gmail.com>",
+  "homepage": "https://github.com/BroKun/molax-demo#readme",
+  "license": "MIT",
+  "main": "lib/molax.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BroKun/molax-demo.git"
+  },
+  "scripts": {
+    "clean": "molax-cli clean",
+    "build": "molax-cli build",
+    "compile": "molax-cli compile",
+    "watch": "molax-cli watch",
+    "test": "molax-cli test"
+  },
+  "bugs": {
+    "url": "https://github.com/BroKun/molax-demo/issues"
+  },
+  "devDependencies": {
+    "power-assert": "^1.6.1",
+    "molax-cli": "^1.0.0"
+  },
+  "nyc": {
+    "extends": "../../configs/nyc.json"
+  },
+  "dependencies": {
+    "react": "^16.13.1"
+  }
+}
