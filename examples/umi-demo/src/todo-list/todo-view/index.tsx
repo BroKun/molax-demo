@@ -1,5 +1,5 @@
 import React from 'react';
-import { useInstance } from 'molax/lib/use';
+import { useInject } from 'molax/lib/use';
 import { Card } from 'antd';
 import { ToDoManager } from '../manager';
 import { TodoAdd } from './todo-add';
@@ -7,7 +7,8 @@ import { ToDoCount } from './count';
 import styles from './index.less';
 
 export const ToDo: React.FC = () => {
-  const manager = useInstance<ToDoManager>(ToDoManager);
+  const manager = useInject<ToDoManager>(ToDoManager);
+  console.log(manager);
   return (
     <div className={styles.todo}>
       <ToDoCount />

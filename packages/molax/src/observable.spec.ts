@@ -1,7 +1,16 @@
 import * as assert from 'power-assert';
 import { prop } from './observable';
-import { setTarget } from './core';
+import { PrePropertySet, Observable } from './observable';
+import { Tracker } from './tracker';
+import { ReactiveSymbol } from './types';
 
+Reflect.defineMetadata(
+  PrePropertySet,
+  (target:object, propertyKey:string|symbol)=>{
+    Reflect.defineMetadata(ReactiveSymbol.Tracker, new Tracker(), target, propertyKey);
+  },
+  Observable
+);
 
 describe('observable', () => {
   class ClassA {
@@ -11,11 +20,12 @@ describe('observable', () => {
   const instanceA = new ClassA();
   it('#basic usage', () => {
     let changed = false;
-    setTarget(instanceA)('name')(()=>{
+    const tracker = Tracker.find(instanceA, 'name')
+    tracker?.add(()=>{
       changed = true;
     });
     instanceA.name = 'a'
-    setTarget(instanceA)('name')(()=>{
+    tracker?.add(()=>{
       changed = true;
     });
     instanceA.name = 'b'

@@ -3,6 +3,7 @@
 # dependencies
 node_modules
 npm-debug.log*
+lerna-debug.log*
 yarn-error.log
 yarn.lock
 package-lock.json

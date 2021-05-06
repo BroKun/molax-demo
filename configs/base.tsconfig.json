@@ -13,10 +13,10 @@
       "downlevelIteration": true,
       "resolveJsonModule": true,
       "module": "commonjs",
-      "target": "es5",
+      "target": "es6",
       "moduleResolution": "node",
       "jsx": "react",
-      "lib": ["es6","dom"],
+      "lib": ["es2016","dom"],
       "types": [
         "mocha",
         "reflect-metadata"

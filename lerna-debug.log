@@ -1,9 +1,0 @@
-0 silly argv { _: [ 'add' ],
-0 silly argv   globs: [],
-0 silly argv   lernaVersion: '3.22.1',
-0 silly argv   '$0': 'lerna',
-0 silly argv   pkg: 'molax-cli' }
-1 notice cli v3.22.1
-2 verbose rootPath /Users/brokun/Documents/github/molax-demo
-3 error Error: 404 Not Found - GET https://registry.npm.alibaba-inc.com/molax-cli - [not_found] document not found
-3 error     at res.buffer.catch.then.body (/Users/brokun/Documents/github/molax-demo/node_modules/@evocateur/npm-registry-fetch/check-response.js:104:15)

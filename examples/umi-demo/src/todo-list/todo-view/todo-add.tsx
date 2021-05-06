@@ -1,12 +1,12 @@
 import React from "react";
 import { Form, Input, Select, message, Button } from "antd";
 import { ToDoManager } from '../manager';
-import { useInstance } from 'molax/lib/use';
+import { useInject } from 'molax/lib/use';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
 
 export const TodoAdd = () => {
-  const manager = useInstance<ToDoManager>(ToDoManager);
+  const manager = useInject<ToDoManager>(ToDoManager);
   const [form] = Form.useForm();
   const handleSubmit = (todo:any): void => {
     console.log('submit')
